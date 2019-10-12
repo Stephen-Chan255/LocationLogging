@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:gravity="center"
+              android:orientation="vertical"
+              tools:context=".LoginActivity">
+
+    <EditText
+        android:id="@+id/etEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="Enter your email"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10pt"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="Enter your password"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="50pt"
+        android:layout_height="wrap_content"
+
+        android:layout_marginBottom="10pt"
+        android:text="Login" />
+
+
+    <TextView
+        android:id="@+id/text_login_anonymous"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="login_anonymous"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/text_user_agreement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30pt"
+        android:text="User Agreement"
+        android:textAlignment="center" />
+
+</LinearLayout>
