@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">LocationLogging</string>
     <string name="title_activity_maps">Map</string>
+    <string name="analysis_text">Feedback: You spend too much time at home, and did not do much outside
+        exercise, which look not a good lifestyle. </string>
 </resources>
