@@ -4,6 +4,6 @@
     <string name="analysis_text">Feedback: You spend too much time at home, and did not do much outside
         exercise, which look not a good lifestyle. </string>
     <string name="title_activity_tabbed">TabbedActivity</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
+    <string name="tab_text_1">Map</string>
+    <string name="tab_text_2">Analysis</string>
 </resources>
