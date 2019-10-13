@@ -11,6 +11,10 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        btn_login.setOnClickListener {
+            startActivity(Intent(this, TabbedActivity::class.java))
+        }
+
         text_login_anonymous.setOnClickListener {
             startActivity(Intent(this, MapsActivity::class.java))
         }
