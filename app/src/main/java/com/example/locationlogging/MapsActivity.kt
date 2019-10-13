@@ -48,12 +48,12 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             startActivity(Intent(this, AnalysisActivity::class.java))
         }
 
-        // run onMapReady() here
-
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        // Obtain the SupportMapFragment obj via map fragment UI
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
-        mapFragment.getMapAsync(this) // to register the map callback
+        // Register the map callback
+        // Will get notified when Map ready, then call onMapReady()
+        mapFragment.getMapAsync(this)
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
@@ -84,7 +84,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
      * installed Google Play services and returned to the app.
      */
     // A callback method from OnMapReadyCallback interface to handle the GoogleMap object
-    // (the internal representation of the map itself), triggered when the map is ready to be used.
+    // It is called automatically when map ready (OnMapReadyCallback will listen for the map)
     override fun onMapReady(googleMap: GoogleMap) {
         map = googleMap
 
@@ -99,7 +99,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private fun checkPermission() {
 
-        // 23 was first time Android introduced the permissions
+        // 23 was first time Android introduced the permissions (Udemy Section 16.88)
         if (Build.VERSION.SDK_INT >= 23 &&
             ContextCompat.checkSelfPermission(this,
                 android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
