@@ -92,13 +92,13 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             != PackageManager.PERMISSION_GRANTED) {
 
             // show permission request dialog (user response handled by onRequestPermissionsResult())
-            ActivityCompat.requestPermissions(activity!!,
-                arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), LOCATION_PERMISSION_REQUEST_CODE
+            requestPermissions(arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), LOCATION_PERMISSION_REQUEST_CODE
             )
             return
         }
         permissionGranted()
     }
+
 
     // Handling user response to the permission request dialog
     @SuppressLint("MissingPermission")
@@ -111,7 +111,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
                 // If request is cancelled, the result arrays are empty.
                 if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
-                    Toast.makeText(context, "Permission granted 111", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "Permission granted", Toast.LENGTH_SHORT).show()
 
                     permissionGranted()
 
