@@ -100,18 +100,16 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     // Handling user response to the permission request dialog
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
 
-        when (requestCode) {
-            LOCATION_PERMISSION_REQUEST_CODE -> {
+        if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
 
-                // If request is cancelled, the result arrays are empty.
-                if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
-                    Toast.makeText(context, "Permission granted", Toast.LENGTH_SHORT).show()
+            // If request is cancelled, the result arrays are empty.
+            if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                Toast.makeText(context, "Permission granted", Toast.LENGTH_SHORT).show()
 
-                    permissionGranted()
+                permissionGranted()
 
-                } else {
-                    Toast.makeText(context, "Permission denied", Toast.LENGTH_SHORT).show()
-                }
+            } else {
+                Toast.makeText(context, "Permission denied", Toast.LENGTH_SHORT).show()
             }
         }
     }
