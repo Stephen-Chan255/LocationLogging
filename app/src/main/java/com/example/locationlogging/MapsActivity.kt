@@ -114,7 +114,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     // Handling user response to the permission request dialog
-    @SuppressLint("MissingPermission")
     override fun onRequestPermissionsResult(requestCode: Int,
                                             permissions: Array<String>, grantResults: IntArray) {
 
@@ -174,7 +173,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         val client = LocationServices.getSettingsClient(this)
         val task = client.checkLocationSettings(builder.build())
-
 
         // 2. Check whether the current location settings are satisfied
         //  Task success means all is well and you can go ahead and initiate a location request

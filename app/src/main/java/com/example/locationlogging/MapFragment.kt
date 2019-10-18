@@ -81,7 +81,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         map = googleMap
         map.uiSettings.isZoomControlsEnabled = true
         Toast.makeText(context, "map ready", Toast.LENGTH_SHORT).show()
-//        setUpMap()
         checkPermission()
     }
 
@@ -92,19 +91,14 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             != PackageManager.PERMISSION_GRANTED) {
 
             // show permission request dialog (user response handled by onRequestPermissionsResult())
-            requestPermissions(arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), LOCATION_PERMISSION_REQUEST_CODE
-            )
+            requestPermissions(arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), LOCATION_PERMISSION_REQUEST_CODE)
             return
         }
         permissionGranted()
     }
 
-
     // Handling user response to the permission request dialog
-    @SuppressLint("MissingPermission")
-    override fun onRequestPermissionsResult(requestCode: Int,
-                                            permissions: Array<String>, grantResults: IntArray) {
-
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
 
         when (requestCode) {
             LOCATION_PERMISSION_REQUEST_CODE -> {
