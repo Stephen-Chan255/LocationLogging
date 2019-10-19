@@ -5,6 +5,7 @@ import android.app.Activity
 import android.content.Intent
 import android.content.IntentSender
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.location.Location
 import android.os.Build
 import android.os.Bundle
@@ -18,8 +19,10 @@ import androidx.fragment.app.Fragment
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.*
 import com.google.android.gms.maps.*
+import com.google.android.gms.maps.model.CircleOptions
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.PolylineOptions
 
 
 class MapFragment : Fragment(), OnMapReadyCallback {
@@ -27,6 +30,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     private lateinit var map: GoogleMap
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var lastLocation: Location
+    private lateinit var lastLatLng: LatLng
     private lateinit var currentLatLng: LatLng
     private lateinit var locationCallback: LocationCallback
     private lateinit var locationRequest: LocationRequest
@@ -44,8 +48,9 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
         mapView.onCreate(savedInstanceState)
         mapView.onResume()
-        // Register the map callback, Will get notified when Map ready, then call onMapReady()
-        mapView.getMapAsync(this)
+
+        mapView.getMapAsync(this)   // Register the map callback (this == onMapReadyCallback)
+                                    // Will get notified when Map ready, then call onMapReady()
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(activity!!)
 
@@ -53,15 +58,28 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             override fun onLocationResult(p0: LocationResult) {
                 super.onLocationResult(p0)
 
+                lastLatLng = LatLng(lastLocation.latitude, lastLocation.longitude)
+
                 lastLocation = p0.lastLocation // update lastLocation
 
                 currentLatLng = LatLng(lastLocation.latitude, lastLocation.longitude)
 
-                Toast.makeText(context, "Location updated", Toast.LENGTH_SHORT).show()
+                map.addPolyline(
+                    PolylineOptions()
+                        .add(lastLatLng)
+                        .add(currentLatLng)
+                        .width(20f)
+                        .color(Color.RED)
+                )
 
-                map.addMarker(MarkerOptions().position(currentLatLng).title("Here you are"))
-
-
+                map.addCircle(
+                    CircleOptions()
+                        .center(currentLatLng)
+                        .radius(1.0)
+                        .strokeWidth(3f)
+                        .strokeColor(Color.RED)
+                        .fillColor(Color.argb(70, 150, 50, 50))
+                )
             }
         }
         createLocationRequest()
@@ -130,9 +148,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
                 // map.moveCamera(CameraUpdateFactory.newLatLng(newYork))
                 // zoom level: 0 (default, fully zoom out) ~ 20
-                map.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 12f))
-
-                map.addMarker(MarkerOptions().position(currentLatLng).title("Here you are"))
+                map.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 20f))
 
                 createLocationRequest()
 
