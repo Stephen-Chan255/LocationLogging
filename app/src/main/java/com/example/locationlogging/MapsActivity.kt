@@ -51,9 +51,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         // Obtain the SupportMapFragment obj via map fragment UI
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
-        // Register the map callback
-        // Will get notified when Map ready, then call onMapReady()
-        mapFragment.getMapAsync(this)
+
+        mapFragment.getMapAsync(this)   // Register the map callback (this == onMapReadyCallback)
+                                        // Will get notified when Map ready, then call onMapReady()
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
