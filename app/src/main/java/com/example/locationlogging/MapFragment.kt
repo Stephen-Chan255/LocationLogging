@@ -17,6 +17,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.google.android.gms.common.api.ResolvableApiException
+import com.google.android.gms.common.util.Hex
 import com.google.android.gms.location.*
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.CircleOptions
@@ -68,8 +69,8 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                     PolylineOptions()
                         .add(lastLatLng)
                         .add(currentLatLng)
-                        .width(20f)
-                        .color(Color.RED)
+                        .width(15f)
+                        .color(Color.parseColor("#73BE60"))
                 )
 
                 map.addCircle(
@@ -77,8 +78,10 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                         .center(currentLatLng)
                         .radius(1.0)
                         .strokeWidth(3f)
-                        .strokeColor(Color.RED)
-                        .fillColor(Color.argb(70, 150, 50, 50))
+                        .strokeColor(Color.BLACK)
+                        .fillColor(Color.WHITE) // .fillColor(Color.argb(70, 150, 50, 50))
+                        .zIndex(1f)
+
                 )
             }
         }
