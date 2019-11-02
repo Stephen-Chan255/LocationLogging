@@ -6,4 +6,8 @@
     <string name="title_activity_tabbed">TabbedActivity</string>
     <string name="tab_text_1">Map</string>
     <string name="tab_text_2">Analysis</string>
+    <string name="text_user_agreement1">1. This application will access your location data while it is running on this device.</string>
+    <string name="text_user_agreement2">2. The location will be recorded and updated every five to ten seconds.</string>
+    <string name="text_user_agreement3">3. Those data will be stored in this device and also be sent to the remote server for lifestyle analysis and feedback generation.</string>
+    <string name="text_user_agreement4">4. You can stop recording the location data by log out this application at anytime.</string>
 </resources>

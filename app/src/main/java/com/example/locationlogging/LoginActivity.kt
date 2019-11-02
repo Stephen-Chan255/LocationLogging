@@ -18,5 +18,9 @@ class LoginActivity : AppCompatActivity() {
         text_login_anonymous.setOnClickListener {
             startActivity(Intent(this, MapsActivity::class.java))
         }
+
+        text_user_agreement.setOnClickListener {
+            startActivity(Intent(this, UserAgreementActivity::class.java))
+        }
     }
 }

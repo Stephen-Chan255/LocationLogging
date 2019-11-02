@@ -81,7 +81,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                         .strokeColor(Color.BLACK)
                         .fillColor(Color.WHITE) // .fillColor(Color.argb(70, 150, 50, 50))
                         .zIndex(1f)
-
                 )
             }
         }
